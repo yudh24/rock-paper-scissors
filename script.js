@@ -46,16 +46,21 @@ let game = () => {
             }
         }
         
-        if (playRound(computerSelection,playerSelection)){
+        if (playRound(computerSelection,playerSelection) == "WIN"){
             playerScore += 1;
-        } else {
+        } 
+        if (playRound(computerSelection,playerSelection) == "LOSE"){
             computerScore += 1;
         }
 
         selectionCondition = false;
     }
+    console.log("You : " + playerScore);
+    console.log("Computer : " + computerScore);
     if (playerScore > computerScore){
         console.log( "You WIN");
+    } else if (playerScore == computerScore){
+        console.log("Draw");
     } else {
         console.log("You LOSE");;
     }
