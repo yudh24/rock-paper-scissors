@@ -31,39 +31,22 @@ let playRound = (computerSelection,playerSelection) => {
     }
 }
 
-let game = () => {
-    let playerScore = 0;
-    let computerScore = 0;
-    let selectionCondition = false;
-    let playerSelection;
-    for (let i = 0; i < 5; i++){
-        computerSelection = computerPlay();
-        while (selectionCondition == false) {
-            let selection = prompt("Input your choose (rock/paper/scissor)?");
-            playerSelection = selection.toLowerCase();
-            if (playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissor"){
-                selectionCondition = true;
-            }
-        }
-        
-        if (playRound(computerSelection,playerSelection) == "WIN"){
-            playerScore += 1;
-        } 
-        if (playRound(computerSelection,playerSelection) == "LOSE"){
-            computerScore += 1;
-        }
-
-        selectionCondition = false;
-    }
-    console.log("You : " + playerScore);
-    console.log("Computer : " + computerScore);
-    if (playerScore > computerScore){
-        console.log( "You WIN");
-    } else if (playerScore == computerScore){
-        console.log("Draw");
-    } else {
-        console.log("You LOSE");;
-    }
+let game = (playerSelection) => {
+    let computerSelection = computerPlay(); 
+    alert("You " + playerSelection + "\nComputer : " + computerSelection + "\n" + playRound(computerSelection,playerSelection));
 }
 
-game();
+const rock = document.querySelector('#rock');
+rock.addEventListener('click', () => {
+    game("rock");
+})
+
+const paper = document.querySelector('#paper');
+paper.addEventListener('click', () => {
+    game("paper");
+})
+
+const scissor = document.querySelector('#scissor');
+scissor.addEventListener('click', () => {
+    game("scissor");
+})
