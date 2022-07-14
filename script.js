@@ -33,7 +33,6 @@ let playRound = (computerSelection,playerSelection) => {
 
 let game = (playerSelection) => {
     let computerSelection = computerPlay(); 
-    //alert("You " + playerSelection + "\nComputer : " + computerSelection + "\n" + playRound(computerSelection,playerSelection));
     if (playRound(computerSelection,playerSelection) == "WIN"){
         const playerScore = document.querySelector("#player-score");
         playerScore.innerText = parseInt(playerScore.innerText) + 1;
