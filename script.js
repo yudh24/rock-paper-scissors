@@ -33,7 +33,20 @@ let playRound = (computerSelection,playerSelection) => {
 
 let game = (playerSelection) => {
     let computerSelection = computerPlay(); 
-    alert("You " + playerSelection + "\nComputer : " + computerSelection + "\n" + playRound(computerSelection,playerSelection));
+    //alert("You " + playerSelection + "\nComputer : " + computerSelection + "\n" + playRound(computerSelection,playerSelection));
+    if (playRound(computerSelection,playerSelection) == "WIN"){
+        const playerScore = document.querySelector("#player-score");
+        playerScore.innerText = parseInt(playerScore.innerText) + 1;
+    } else if (playRound(computerSelection,playerSelection) == "LOSE") {
+        const compScore = document.querySelector("#comp-score");
+        compScore.innerText = parseInt(compScore.innerText) + 1;
+    } else {
+        const playerScore = document.querySelector("#player-score");
+        playerScore.innerText = parseInt(playerScore.innerText) + 1;
+
+        const compScore = document.querySelector("#comp-score");
+        compScore.innerText = parseInt(compScore.innerText) + 1;
+    }
 }
 
 const rock = document.querySelector('#rock');

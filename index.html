@@ -5,11 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissor</title>
+    <link href="http://fonts.cdnfonts.com/css/pencil-2" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button id="rock" name="rock">ROCK</button>
-    <button id="paper" name="paper">PAPER</button>
-    <button id="scissor" name="scissor">SCISSOR</button>
+    <div class="construct">
+        <div class="title"><strong>ROCK PAPER SCISSOR</strong></div>
+        <div class="button">
+            <button id="rock" name="rock">ROCK</button>
+            <button id="paper" name="paper">PAPER</button>
+            <button id="scissor" name="scissor">SCISSOR</button>
+        </div>
+        <div class="score">
+            <table>
+                <tr>
+                    <td>YOU</td>
+                    <td>COMPUTER</td>
+                </tr>
+                <tr>
+                    <td id="player-score">0</td>
+                    <td id="comp-score">0</td>
+                </tr>
+            </table>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
