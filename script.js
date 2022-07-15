@@ -4,48 +4,81 @@ let computerPlay = () => {
 }
 
 let playRound = (computerSelection,playerSelection) => {
+    const eachResult = document.querySelector(".eachResult");
+    const construct = document.querySelector(".construct");
+    const playerScore = document.querySelector("#player-score");
+    const compScore = document.querySelector("#comp-score");
+
+    const tryAgain = () => {
+        const tryAgainButton = document.createElement("button");
+        tryAgainButton.classList.add("tryAgain");
+        tryAgainButton.innerText = "Try Again!";
+        construct.appendChild(tryAgainButton);
+        
+        const tryAgain = document.querySelector('.tryAgain');
+        tryAgain.addEventListener('click', () => {
+        location.reload();
+        })
+    }
+
+    const win = () => {
+        playerScore.innerText = parseInt(playerScore.innerText) + 1;
+        eachResult.innerText = `${playerSelection} won against ${computerSelection}`
+        if (playerScore.innerText == 5) {
+            const playerWon = document.createElement("h1");
+            playerWon.classList.add("playerWon");
+            playerWon.innerText = "Congratulation, YOU WON!!!"
+            construct.appendChild(playerWon);
+            tryAgain();
+        }
+    }
+
+    const lose = () => {
+        compScore.innerText = parseInt(compScore.innerText) + 1;
+        eachResult.innerText = `${playerSelection} beaten by ${computerSelection}`;
+        if (compScore.innerText == 5) {
+            const compWon = document.createElement("h1");
+            compWon.classList.add("compWon");
+            compWon.innerText = "YOU LOSE!!"
+            construct.appendChild(compWon);
+            tryAgain();
+        }
+    }
+
+    const draw = () => {
+        eachResult.innerText = playerSelection + " draw with " + computerSelection;
+    }
+
     if (playerSelection == "rock") {
         if (computerSelection == "scissor") {
-            return "WIN";
+            return win();
         } else if (computerSelection == "paper"){
-            return "LOSE";
+            return lose();
         } else {
-            return "DRAW"
+            return draw();
         }
     } else if (playerSelection == "paper") {
         if (computerSelection == "rock") {
-            return "WIN";
+            return win();
         } else if (computerSelection == "scissor"){
-            return "LOSE";
+            return lose();
         } else {
-            return "DRAW"
+            return draw();
         }
     } else {
         if (computerSelection == "paper") {
-            return "WIN";
+            return win();
         } else if (computerSelection == "rock"){
-            return "LOSE";
+            return lose();
         } else {
-            return "DRAW"
+            return draw();
         }
     }
 }
 
 let game = (playerSelection) => {
     let computerSelection = computerPlay(); 
-    if (playRound(computerSelection,playerSelection) == "WIN"){
-        const playerScore = document.querySelector("#player-score");
-        playerScore.innerText = parseInt(playerScore.innerText) + 1;
-    } else if (playRound(computerSelection,playerSelection) == "LOSE") {
-        const compScore = document.querySelector("#comp-score");
-        compScore.innerText = parseInt(compScore.innerText) + 1;
-    } else {
-        const playerScore = document.querySelector("#player-score");
-        playerScore.innerText = parseInt(playerScore.innerText) + 1;
-
-        const compScore = document.querySelector("#comp-score");
-        compScore.innerText = parseInt(compScore.innerText) + 1;
-    }
+    playRound(computerSelection,playerSelection);
 }
 
 const rock = document.querySelector('#rock');
