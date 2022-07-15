@@ -10,11 +10,12 @@ let playRound = (computerSelection,playerSelection) => {
     const compScore = document.querySelector("#comp-score");
 
     const tryAgain = () => {
+        construct.removeChild(document.querySelector('.button')); 
         const tryAgainButton = document.createElement("button");
         tryAgainButton.classList.add("tryAgain");
         tryAgainButton.innerText = "Try Again!";
         construct.appendChild(tryAgainButton);
-        
+
         const tryAgain = document.querySelector('.tryAgain');
         tryAgain.addEventListener('click', () => {
         location.reload();
